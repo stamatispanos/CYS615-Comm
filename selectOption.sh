@@ -128,7 +128,7 @@ mainmenu () {
 		       
 			# policy 6 begin
 			iptables -A INPUT -i lo -j ACCEPT
-		       iptables -t filter -A INPUT -i eth1 -p tcp -s 127.0.0.0/8  -j REJECT
+		       iptables -t filter -A INPUT -p tcp -s 127.0.0.0/8  -j REJECT
 		       # policy 6 end
 			# policy 7 begin
 		        iptables -I INPUT 1 -i lo -j ACCEPT
