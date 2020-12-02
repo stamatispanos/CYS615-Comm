@@ -41,20 +41,20 @@ mainmenu () {
 			printf "Policy 3 added succesfully!\n\n"
 			
 		elif [ "$mainmenuinput" = "4" ]; then
-		       iptables -t filter -A INPUT -s 10.10.1.48 -d 10.10.1.48  -j REJECT
+		       iptables -t filter -A INPUT -i eth1 -s 10.10.1.48 -d 10.10.1.48  -j REJECT
 		       clear 
 			printf "Policy 4 added succesfully!\n\n"
 			
 		elif [ "$mainmenuinput" = "5" ]; then
 
-		       iptables -t filter -A INPUT -p tcp -s 192.168.0.0/16  -j REJECT
-		       iptables -t filter -A INPUT -p tcp -s 169.254.0.0/16  -j REJECT
+		       iptables -t filter -A INPUT -i eth1 -p tcp -s 192.168.0.0/16  -j REJECT
+		       iptables -t filter -A INPUT -i eth1 -p tcp -s 169.254.0.0/16  -j REJECT
 		       clear 
 			printf "Policy 5 added succesfully!\n\n"
 			
 		elif [ "$mainmenuinput" = "6" ]; then
 			iptables -A INPUT -i lo -j ACCEPT
-		       iptables -t filter -A INPUT -p tcp -s 127.0.0.0/8  -j REJECT
+		       iptables -t filter -A INPUT -i eth1 -p tcp -s 127.0.0.0/8  -j REJECT
 		       clear 
 			printf "Policy 6 added succesfully!\n\n"
 			
@@ -118,17 +118,17 @@ mainmenu () {
 		       # policy 3 end
 		       
 			# policy 4 begin
-		       iptables -t filter -A INPUT -s 10.10.1.48 -d 10.10.1.48  -j REJECT
+		       iptables -t filter -A INPUT -i eth1 -s 10.10.1.48 -d 10.10.1.48  -j REJECT
 		       # policy 4 end
 		       
 			# policy 5 begin
-		       iptables -t filter -A INPUT -p tcp -s 192.168.0.0/16  -j REJECT
-		       iptables -t filter -A INPUT -p tcp -s 169.254.0.0/16  -j REJECT
+		       iptables -t filter -A INPUT -i eth1 -p tcp -s 192.168.0.0/16  -j REJECT
+		       iptables -t filter -A INPUT -i eth1 -p tcp -s 169.254.0.0/16  -j REJECT
 		       # policy 5 end
 		       
 			# policy 6 begin
 			iptables -A INPUT -i lo -j ACCEPT
-		       iptables -t filter -A INPUT -p tcp -s 127.0.0.0/8  -j REJECT
+		       iptables -t filter -A INPUT -i eth1 -p tcp -s 127.0.0.0/8  -j REJECT
 		       # policy 6 end
 			# policy 7 begin
 		        iptables -I INPUT 1 -i lo -j ACCEPT
